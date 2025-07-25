@@ -6,7 +6,7 @@ def df_to_string(df):
     result = ''
 
     for index, row in df.iterrows():
-        result += f'{row['content']}. {row['comment']} {row['created_at']}\n\n'
+        result += row['content'] + '. ' + row['comment'] + ' ' + row['created_at'] + '\n\n'
 
     return result
 
@@ -19,7 +19,7 @@ def read_data_from_csv(current_file):
     df['comment'] = df['comment'].apply(remove_quotes)
     df['created_at'] = df['created_at'].apply(string_to_date)
 
-    return df
+    return df[::-1]
 
 
 def add_quotes(item):
